@@ -4,6 +4,7 @@ https://airbit.com/vamshi
 https://allmylinks.com/vamshi
 https://aniworld.to/user/profil/vamshi
 https://anilist.co/user/vamshi/
+https://asciinema.org/~vamshi
 https://atcoder.jp/users/vamshi
 https://VJudge.net/user/vamshi
 https://audiojungle.net/user/vamshi
@@ -33,6 +34,7 @@ https://crowdin.com/profile/vamshi
 https://dev.to/vamshi
 https://www.dailymotion.com/vamshi
 https://www.discogs.com/user/vamshi
+https://discord.com
 https://discuss.elastic.co/u/vamshi
 https://disqus.com/vamshi
 https://hub.docker.com/u/vamshi/
@@ -55,6 +57,7 @@ https://plugins.gradle.org/u/vamshi
 https://www.grailed.com/vamshi
 https://www.gumroad.com/vamshi
 https://hackaday.io/vamshi
+https://hackerearth.com/@vamshi
 https://hackerone.com/vamshi
 https://hackerrank.com/vamshi
 https://hackmd.io/@vamshi
@@ -65,7 +68,9 @@ https://www.ifttt.com/p/vamshi
 https://imgur.com/user/vamshi
 https://forum.ionicframework.com/u/vamshi
 https://issuu.com/vamshi
+https://vamshi.itch.io/
 https://www.itemfix.com/c/vamshi
+https://translate.jellyfin.org/user/vamshi/
 https://www.kaskus.co.id/@vamshi
 https://keybase.io/vamshi
 https://kick.com/vamshi
@@ -89,6 +94,7 @@ https://observablehq.com/@vamshi
 https://pastebin.com/u/vamshi
 https://www.patreon.com/vamshi
 https://www.hotukdeals.com/profile/vamshi
+https://www.pepperdeals.com/profile/vamshi
 https://www.periscope.tv/vamshi/
 https://pokemonshowdown.com/users/vamshi
 https://www.producthunt.com/@vamshi
@@ -100,14 +106,11 @@ https://apps.runescape.com/runemetrics/app/overview/player/vamshi
 https://scratch.mit.edu/users/vamshi
 https://sketchfab.com/vamshi
 https://vamshi.slack.com
-https://www.slant.co/users/vamshi
 https://slides.com/vamshi
 https://vamshi.smugmug.com
-https://www.smule.com/vamshi
 https://www.snapchat.com/add/vamshi
 https://soundcloud.com/vamshi
 https://speakerdeck.com/vamshi
-https://speedrun.com/users/vamshi
 https://robertsspaceindustries.com/citizens/vamshi
 https://steamcommunity.com/id/vamshi/
 https://www.strava.com/athletes/vamshi
@@ -157,9 +160,8 @@ https://mastodon.social/@vamshi
 https://www.minds.com/vamshi/
 https://moikrug.ru/vamshi
 https://note.com/vamshi
-https://www.npmjs.com/~vamshi
 https://osu.ppy.sh/users/vamshi
 https://pikabu.ru/@vamshi
 https://www.pinterest.com/vamshi/
 https://www.baby.ru/u/vamshi
-Total Websites Username Detected On : 164
+Total Websites Username Detected On : 166

@@ -1,47 +1,88 @@
 import { useState } from "react";
-import axios from "axios";
 import "./App.css";
+
+import Navbar from "./components/Navbar";
+import SearchBox from "./components/SearchBox";
+import { searchUsername } from "./services/api";
 
 function App() {
   const [username, setUsername] = useState("");
   const [results, setResults] = useState([]);
-  const [count, setCount] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const search = async () => {
-    const res = await axios.get(
-      `http://127.0.0.1:8000/search/${username}`
-    );
+  const handleSearch = async () => {
+    if (!username.trim()) return;
 
-    setResults(res.data.results);
-    setCount(res.data.count);
+    setLoading(true);
+    setError("");
+    setResults([]);
+
+    try {
+      const data = await searchUsername(username);
+      setResults(data.results || []);
+    } catch (err) {
+      console.error(err);
+      setError("Unable to connect to backend.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <div className="container">
-      <h1>OSINT Nexus</h1>
+    <>
+      <Navbar />
 
-      <div className="searchBox">
-        <input
-          placeholder="Username..."
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+      <div className="container">
+        <h1>🔎 OSINT Nexus</h1>
+
+        <SearchBox
+          username={username}
+          setUsername={setUsername}
+          onSearch={handleSearch}
+          loading={loading}
         />
 
-        <button onClick={search}>Search</button>
+        {error && <p className="error">{error}</p>}
+
+        {!loading && results.length > 0 && (
+          <div className="results">
+            <h2>Found {results.length} Profiles</h2>
+
+            {results.map((item, index) => (
+              <div className="card" key={index}>
+                <h3>{item.site}</h3>
+
+                <a
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {item.url}
+                </a>
+
+                <br />
+                <br />
+
+                <button
+                  onClick={() => {
+                    navigator.clipboard.writeText(item.url);
+                    alert("Copied!");
+                  }}
+                >
+                  Copy Link
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {!loading &&
+          results.length === 0 &&
+          username !== "" &&
+          !error && <p>No profiles found.</p>}
       </div>
-
-      <h3>Accounts Found: {count}</h3>
-
-      {results.map((item, index) => (
-        <div className="card" key={index}>
-          <h3>{item.site}</h3>
-
-          <a href={item.url} target="_blank" rel="noreferrer">
-            {item.url}
-          </a>
-        </div>
-      ))}
-    </div>
+    </>
   );
 }
 
