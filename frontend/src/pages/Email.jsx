@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import { emailLookup } from "../services/api";
 
 function Email() {
   const [email, setEmail] = useState("");
@@ -18,16 +18,11 @@ function Email() {
     setResult(null);
 
     try {
-      const response = await axios.get(
-        `http://127.0.0.1:8000/email/${encodeURIComponent(
-          email.trim()
-        )}`
-      );
-
-      setResult(response.data);
+      const data = await emailLookup(email.trim());
+      setResult(data);
     } catch (err) {
-      console.error(err);
-      setError("Unable to connect to the backend.");
+      console.error("Email lookup error:", err);
+      setError("Unable to connect to the OSINT Nexus backend.");
     } finally {
       setLoading(false);
     }
@@ -35,6 +30,7 @@ function Email() {
 
   return (
     <div className="username-page">
+
       <h1>Email Intelligence 📧</h1>
 
       <p className="subtitle">
@@ -42,6 +38,7 @@ function Email() {
       </p>
 
       <div className="username-search-box">
+
         <input
           type="email"
           placeholder="Enter email address..."
@@ -61,58 +58,82 @@ function Email() {
         >
           {loading ? "Analyzing..." : "🔎 Investigate"}
         </button>
+
       </div>
 
-      {error && <div className="error">⚠️ {error}</div>}
+      {error && (
+        <div className="error">
+          ⚠️ {error}
+        </div>
+      )}
 
       {loading && (
         <div className="scan-status">
           <div className="spinner"></div>
+
           <div>
             <strong>Analyzing email...</strong>
-            <p>Checking syntax, domain and provider information.</p>
+            <p>
+              Checking email format, domain and provider.
+            </p>
           </div>
         </div>
       )}
 
       {result && !loading && (
         <div className="search-results">
+
           <div className="results-header">
             <div>
               <h2>Email Analysis</h2>
               <p>{result.email}</p>
             </div>
+
+            <div className="result-count">
+              📧
+            </div>
           </div>
 
           <div className="stats-grid">
+
             <div className="stat-card">
               <span>✅</span>
+
               <div>
                 <small>Format</small>
                 <strong>
-                  {result.valid_format ? "Valid" : "Invalid"}
+                  {result.valid_format
+                    ? "Valid"
+                    : "Invalid"}
                 </strong>
               </div>
             </div>
 
             <div className="stat-card">
               <span>🌐</span>
+
               <div>
                 <small>Domain</small>
-                <strong>{result.domain || "Unknown"}</strong>
+                <strong>
+                  {result.domain || "Unknown"}
+                </strong>
               </div>
             </div>
 
             <div className="stat-card">
               <span>📮</span>
+
               <div>
                 <small>Provider</small>
-                <strong>{result.provider || "Unknown"}</strong>
+                <strong>
+                  {result.provider || "Unknown"}
+                </strong>
               </div>
             </div>
 
             <div className="stat-card">
               <span>🛡️</span>
+
               <div>
                 <small>Disposable</small>
                 <strong>
@@ -120,9 +141,12 @@ function Email() {
                 </strong>
               </div>
             </div>
+
           </div>
+
         </div>
       )}
+
     </div>
   );
 }
