@@ -11,6 +11,7 @@ backend/venv/
 
 # Personal / temporary files
 backend/*.txt
+!backend/requirements.txt
 
 # Environment files
 .env
