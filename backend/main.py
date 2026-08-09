@@ -1,30 +1,53 @@
 import socket
 import ipaddress
+import re
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from services.sherlock_service import search_username
 
 
-app = FastAPI(title="OSINT Nexus API")
+# --------------------------------------------------
+# FastAPI Application
+# --------------------------------------------------
 
+app = FastAPI(title="OSINT Nexus API", version="1.1")
+
+
+# --------------------------------------------------
+# CORS Configuration
+# --------------------------------------------------
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=[
+        "https://osint-nexus-frontend.onrender.com",
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
 
+# --------------------------------------------------
+# Home / Health Check
+# --------------------------------------------------
+
 @app.get("/")
 def home():
     return {
         "project": "OSINT Nexus",
-        "version": "1.1"
+        "version": "1.1",
+        "status": "online"
     }
 
+
+# --------------------------------------------------
+# Username Search - Full
+# --------------------------------------------------
 
 @app.get("/search/{username}")
 def full_search(username: str):
@@ -38,6 +61,10 @@ def full_search(username: str):
     }
 
 
+# --------------------------------------------------
+# Username Search - Quick
+# --------------------------------------------------
+
 @app.get("/search/quick/{username}")
 def quick_search(username: str):
     results = search_username(username, mode="quick")
@@ -48,8 +75,11 @@ def quick_search(username: str):
         "count": len(results),
         "results": results
     }
-import re
 
+
+# --------------------------------------------------
+# Email Lookup
+# --------------------------------------------------
 
 COMMON_PROVIDERS = {
     "gmail.com": "Gmail",
@@ -73,9 +103,11 @@ DISPOSABLE_DOMAINS = {
 
 @app.get("/email/{email}")
 def email_lookup(email: str):
+
     email = email.strip().lower()
 
     pattern = r"^[^@\s]+@[^@\s]+\.[^@\s]+$"
+
     valid_format = bool(re.match(pattern, email))
 
     domain = email.split("@", 1)[1] if "@" in email else ""
@@ -94,17 +126,29 @@ def email_lookup(email: str):
         "provider": provider,
         "disposable": disposable,
     }
+
+
+# --------------------------------------------------
+# Domain Lookup
+# --------------------------------------------------
+
 @app.get("/domain/{domain}")
 def domain_lookup(domain: str):
+
     domain = domain.strip().lower()
 
-    # Remove protocol if the user enters one
+    # Remove protocol if user enters it
     domain = re.sub(r"^https?://", "", domain)
+
+    # Remove path
     domain = domain.split("/")[0]
 
     valid = bool(
         re.match(
-            r"^(?=.{1,253}$)([a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$",
+            r"^(?=.{1,253}$)"
+            r"([a-zA-Z0-9]"
+            r"(?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.)+"
+            r"[a-zA-Z]{2,}$",
             domain,
         )
     )
@@ -121,6 +165,7 @@ def domain_lookup(domain: str):
     try:
         ip_address = socket.gethostbyname(domain)
         status = "Active"
+
     except socket.gaierror:
         ip_address = None
         status = "Unable to resolve"
@@ -132,11 +177,19 @@ def domain_lookup(domain: str):
         "hostname": domain,
         "status": status,
     }
+
+
+# --------------------------------------------------
+# IP Lookup
+# --------------------------------------------------
+
 @app.get("/ip/{ip}")
 def ip_lookup(ip: str):
+
     ip = ip.strip()
 
     try:
+
         address = ipaddress.ip_address(ip)
 
         return {
