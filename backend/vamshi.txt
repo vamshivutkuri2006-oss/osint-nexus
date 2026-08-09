@@ -23,17 +23,16 @@ https://www.clubhouse.com/@vamshi
 https://www.codecademy.com/profiles/vamshi
 https://www.codechef.com/users/vamshi
 https://codeforces.com/profile/vamshi
+https://codepen.io/vamshi
 https://coderwall.com/vamshi
 https://www.codewars.com/users/vamshi
 https://www.colourlovers.com/lover/vamshi
 https://cplusplus.com/user/vamshi
-https://cracked.ax/vamshi
 https://www.credly.com/users/vamshi
 https://vamshi.crevado.com
 https://crowdin.com/profile/vamshi
 https://dev.to/vamshi
 https://www.dailymotion.com/vamshi
-https://www.discogs.com/user/vamshi
 https://discord.com
 https://discuss.elastic.co/u/vamshi
 https://disqus.com/vamshi
@@ -48,7 +47,6 @@ https://fosstodon.org/@vamshi
 https://www.freelancer.com/u/vamshi
 https://freesound.org/people/vamshi/
 https://www.gaiaonline.com/profiles/vamshi
-https://gamefaqs.gamespot.com/community/vamshi
 https://genius.com/artists/vamshi
 https://genius.com/vamshi
 https://gitlab.com/vamshi
@@ -77,13 +75,14 @@ https://kick.com/vamshi
 https://www.kongregate.com/accounts/vamshi
 https://laracasts.com/@vamshi
 https://launchpad.net/~vamshi
+https://www.lesswrong.com/users/vamshi
 https://letterboxd.com/vamshi
 https://www.librarything.com/profile/vamshi
 https://lichess.org/@/vamshi
+https://linkedin.com/in/vamshi
 https://linktr.ee/vamshi
 https://medium.com/@vamshi
 https://www.memrise.com/user/vamshi/
-https://api.mojang.com/users/profiles/minecraft/vamshi
 https://www.mixcloud.com/vamshi/
 https://monkeytype.com/profile/vamshi
 https://myanimelist.net/profile/vamshi
@@ -94,13 +93,11 @@ https://observablehq.com/@vamshi
 https://pastebin.com/u/vamshi
 https://www.patreon.com/vamshi
 https://www.hotukdeals.com/profile/vamshi
-https://www.pepperdeals.com/profile/vamshi
 https://www.periscope.tv/vamshi/
 https://pokemonshowdown.com/users/vamshi
 https://www.producthunt.com/@vamshi
 http://promodj.com/vamshi
 https://www.redbubble.com/people/vamshi
-https://www.reverbnation.com/vamshi
 https://rumble.com/user/vamshi
 https://apps.runescape.com/runemetrics/app/overview/player/vamshi
 https://scratch.mit.edu/users/vamshi
@@ -108,14 +105,17 @@ https://sketchfab.com/vamshi
 https://vamshi.slack.com
 https://slides.com/vamshi
 https://vamshi.smugmug.com
+https://www.smule.com/vamshi
 https://www.snapchat.com/add/vamshi
 https://soundcloud.com/vamshi
 https://speakerdeck.com/vamshi
+https://speedrun.com/users/vamshi
 https://robertsspaceindustries.com/citizens/vamshi
 https://steamcommunity.com/id/vamshi/
 https://www.strava.com/athletes/vamshi
 https://vamshi.substack.com/
 https://forum.sublimetext.com/u/vamshi
+https://ch.tetr.io/u/vamshi
 https://www.themoviedb.org/u/vamshi
 https://topmate.io/vamshi
 https://tellonym.me/vamshi
@@ -148,7 +148,6 @@ https://www.younow.com/vamshi/
 https://www.couchsurfing.com/people/vamshi
 http://dating.ru/vamshi
 https://devrant.com/users/vamshi
-https://www.drive2.ru/users/vamshi
 https://www.fixya.com/users/vamshi
 https://www.geocaching.com/p/default.aspx?u=vamshi
 https://habr.com/ru/users/vamshi
@@ -160,8 +159,10 @@ https://mastodon.social/@vamshi
 https://www.minds.com/vamshi/
 https://moikrug.ru/vamshi
 https://note.com/vamshi
+https://www.npmjs.com/~vamshi
 https://osu.ppy.sh/users/vamshi
 https://pikabu.ru/@vamshi
 https://www.pinterest.com/vamshi/
+https://vamshi.tumblr.com/
 https://www.baby.ru/u/vamshi
-Total Websites Username Detected On : 166
+Total Websites Username Detected On : 167

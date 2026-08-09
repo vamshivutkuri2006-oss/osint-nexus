@@ -1,88 +1,122 @@
-import { useState } from "react";
-import "./App.css";
+import { Routes, Route, NavLink } from "react-router-dom";
 
-import Navbar from "./components/Navbar";
-import SearchBox from "./components/SearchBox";
-import { searchUsername } from "./services/api";
+import Dashboard from "./pages/Dashboard";
+import Username from "./pages/Username";
+import Email from "./pages/Email";
+import Domain from "./pages/Domain";
+import IP from "./pages/IP";
+import Reports from "./pages/Reports";
+import Settings from "./pages/Settings";
 
 function App() {
-  const [username, setUsername] = useState("");
-  const [results, setResults] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-
-  const handleSearch = async () => {
-    if (!username.trim()) return;
-
-    setLoading(true);
-    setError("");
-    setResults([]);
-
-    try {
-      const data = await searchUsername(username);
-      setResults(data.results || []);
-    } catch (err) {
-      console.error(err);
-      setError("Unable to connect to backend.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
-    <>
-      <Navbar />
+    <div className="app">
 
-      <div className="container">
-        <h1>🔎 OSINT Nexus</h1>
+      {/* NAVBAR */}
+      <header className="navbar">
+        <div className="logo">
+          🔎 OSINT Nexus
+        </div>
 
-        <SearchBox
-          username={username}
-          setUsername={setUsername}
-          onSearch={handleSearch}
-          loading={loading}
-        />
+        <nav>
+          <a href="/">Home</a>
+          <a href="#">Documentation</a>
 
-        {error && <p className="error">{error}</p>}
+          <a
+            href="https://github.com/vamshivutkuri2006-oss/osint-nexus"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+        </nav>
+      </header>
 
-        {!loading && results.length > 0 && (
-          <div className="results">
-            <h2>Found {results.length} Profiles</h2>
+      <div className="layout">
 
-            {results.map((item, index) => (
-              <div className="card" key={index}>
-                <h3>{item.site}</h3>
+        {/* SIDEBAR */}
+        <aside className="sidebar">
+          <h3>OSINT Tools</h3>
 
-                <a
-                  href={item.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {item.url}
-                </a>
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              `menu ${isActive ? "active" : ""}`
+            }
+          >
+            🏠 Dashboard
+          </NavLink>
 
-                <br />
-                <br />
+          <NavLink
+            to="/username"
+            className={({ isActive }) =>
+              `menu ${isActive ? "active" : ""}`
+            }
+          >
+            🔎 Username Search
+          </NavLink>
 
-                <button
-                  onClick={() => {
-                    navigator.clipboard.writeText(item.url);
-                    alert("Copied!");
-                  }}
-                >
-                  Copy Link
-                </button>
-              </div>
-            ))}
-          </div>
-        )}
+          <NavLink
+            to="/email"
+            className={({ isActive }) =>
+              `menu ${isActive ? "active" : ""}`
+            }
+          >
+            📧 Email Lookup
+          </NavLink>
 
-        {!loading &&
-          results.length === 0 &&
-          username !== "" &&
-          !error && <p>No profiles found.</p>}
+          <NavLink
+            to="/domain"
+            className={({ isActive }) =>
+              `menu ${isActive ? "active" : ""}`
+            }
+          >
+            🌐 Domain Lookup
+          </NavLink>
+
+          <NavLink
+            to="/ip"
+            className={({ isActive }) =>
+              `menu ${isActive ? "active" : ""}`
+            }
+          >
+            🌍 IP Lookup
+          </NavLink>
+
+          <NavLink
+            to="/reports"
+            className={({ isActive }) =>
+              `menu ${isActive ? "active" : ""}`
+            }
+          >
+            📄 Reports
+          </NavLink>
+
+          <NavLink
+            to="/settings"
+            className={({ isActive }) =>
+              `menu ${isActive ? "active" : ""}`
+            }
+          >
+            ⚙️ Settings
+          </NavLink>
+        </aside>
+
+        {/* PAGE CONTENT */}
+        <main className="content">
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/username" element={<Username />} />
+            <Route path="/email" element={<Email />} />
+            <Route path="/domain" element={<Domain />} />
+            <Route path="/ip" element={<IP />} />
+            <Route path="/reports" element={<Reports />} />
+            <Route path="/settings" element={<Settings />} />
+          </Routes>
+        </main>
+
       </div>
-    </>
+    </div>
   );
 }
 
